@@ -1,1 +1,1 @@
-[['2021-07-09 10:33:22', '2021-07-08', ' CNBKA', 'Century Bancorp Inc', 'Sloane Barry R', 'COB, CEO, Pres', 'P - Purchase', '$197.31', '+0'], ['2021-07-09 09:39:37', '2021-07-08', ' MSM', 'Msc Industrial Direct Co Inc', 'Martin Edward F Jr', 'SVP, Sales, Customer Success', 'S - Sale', '$90.72', '-705'], ['2021-07-09 08:53:37', '2021-07-08', ' SAM', 'Boston Beer Co Inc', 'Koch C James', 'COB, 10%', 'S - Sale', '$960.26', '-2,500']]
+277.94
