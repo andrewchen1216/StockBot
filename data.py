@@ -9,7 +9,8 @@ class StockBot:
     URL = "http://openinsider.com/latest-insider-trading"
     
     def __init__(self):
-        pass
+        self.con = sqlite3.connect("/Users/andrew/Documents/Personal Project/StockBot/stock.db")
+        self.cur = self.con.cursor()
     
     #Two tables
     """
@@ -26,18 +27,30 @@ class StockBot:
         All stocks will be based on insider trading news 
     """
     def create_database(self):
-        self.con = sqlite3.connect("../stock.db")
+        self.con = sqlite3.connect("/Users/andrew/Documents/Personal Project/StockBot/stock.db")
         self.cur = self.con.cursor()
 
-    def create_table(self,ticker,):
-        pass
+    def create_table(self):
+        self.cur.execute('''CREATE TABLE To_the_moon
+               (ticker,purchase_price,date)''')
+        self.con.commit()
+
 
     def insert_data(self, datalist):
-        pass
+        #datalist = [ticker,price,date]
+        self.cur.execute("INSERT INTO To_the_moon VALUES {ticker},{price},{date})".format(ticker = datalist[0],price = datalist[1],date= datalist[2]))
+        self.con.commit()
+        
     
     def retrieve_data(self):
-        pass
-    
+        for row in self.cur.execute('SELECT * FROM To_the_moon ORDER BY purchase_price'):
+            print(row)
+        
+    def find_all_tables(self):
+        res = self.con.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        for name in res.fetchall():
+            print(name[0])
+
     def close_database(self):
         self.con.close()
     
@@ -94,5 +107,8 @@ class StockBot:
 
 if __name__ == '__main__':
     bot = StockBot()
-    print(bot.get_ticker_price("MSFT"))
+    
+    bot.find_all_tables()
+    bot.close_database()
+    # general while loop will be in here 
 
